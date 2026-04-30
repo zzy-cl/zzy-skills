@@ -1,0 +1,26 @@
+{
+  "name": "zzy-skills",
+  "version": "1.0.0",
+  "description": "存储skills",
+  "keywords": [
+    "agent",
+    "skill",
+    "skill",
+    "skills"
+  ],
+  "homepage": "https://github.com/zzy-cl/zzy-skills#readme",
+  "bugs": {
+    "url": "https://github.com/zzy-cl/zzy-skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zzy-cl/zzy-skills.git"
+  },
+  "license": "ISC",
+  "author": "zzy",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
