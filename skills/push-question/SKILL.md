@@ -5,30 +5,62 @@ description: |
   触发：用户说"推送这道题"、"保存到面试宝典"、"push question"、
   "保存问答"、"记录这个问题"、"这道题记下来"、"加入题库"、
   "存到面试题"、"归档这个问题"等。
-metadata:
-  openclaw:
-    requires:
-      bins:
-        - curl
-      config:
-        - skills.entries.push-question.env.PUSH_QUESTION_URL
-        - skills.entries.push-question.env.PUSH_QUESTION_API_KEY
+metadata: { "openclaw": { "requires": { "bins": ["curl"], "config": ["skills.entries.push-question.env.PUSH_QUESTION_URL", "skills.entries.push-question.env.PUSH_QUESTION_API_KEY"] } } }
 ---
 
 # 推送到 ZZYAdmin 面试宝典
 
 ## API
 
+### 创建题目
+
 ```bash
-curl -s -X POST "$PUSH_QUESTION_URL/question/push" \
+curl -s -X POST "$PUSH_QUESTION_URL/question/open/create" \
   -H "Content-Type: application/json" \
-  -H "X-API-Key: $PUSH_QUESTION_API_KEY" \
+  -H "x-api-key: $PUSH_QUESTION_API_KEY" \
   -d '{
     "question": "<标题，30汉字以内>",
     "answer": "<Markdown 格式的回答>",
     "category": "<分类code>",
     "difficulty": "<easy|medium|hard>"
   }'
+```
+
+### 列表查询
+
+```bash
+curl -s -X POST "$PUSH_QUESTION_URL/question/open/list" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $PUSH_QUESTION_API_KEY" \
+  -d '{
+    "page": 1,
+    "size": 10
+  }'
+```
+
+### 详情查询
+
+```bash
+curl -s -X GET "$PUSH_QUESTION_URL/question/open/detail/<id>" \
+  -H "x-api-key: $PUSH_QUESTION_API_KEY"
+```
+
+### 修改题目
+
+```bash
+curl -s -X PATCH "$PUSH_QUESTION_URL/question/open/update/<id>" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $PUSH_QUESTION_API_KEY" \
+  -d '{
+    "difficulty": "hard"
+  }'
+```
+
+### 删除题目
+
+```bash
+curl -s -X DELETE "$PUSH_QUESTION_URL/question/open/remove/<id>" \
+  -H "x-api-key: $PUSH_QUESTION_API_KEY"
 ```
 
 ## 参数
