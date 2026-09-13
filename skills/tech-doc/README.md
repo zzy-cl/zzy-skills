@@ -20,7 +20,7 @@ An [Agent Skills](https://agentskills.io)-compatible skill for writing technical
 将 `tech-doc/` 目录复制到各 Agent 的技能发现路径（目录名必须与 frontmatter 的 `name` 一致）：
 
 - Claude Code：`~/.claude/skills/tech-doc/`
-- ZCode：`~/.agents/skills/tech-doc/`（或项目内 `.agents/skills/`）
+- ZCode：`~/.zcode/skills/tech-doc/`（ZCode 专属全局）；`~/.agents/skills/` 为跨工具共享路径、其他 Agent 也会读取——需限定仅 ZCode 可用时安装到前者
 - openClaw：在 `openclaw.json` 的 `skills.entries` 中配置
 - 不支持技能发现的 Agent（Codex 等）：在其指令文件（AGENTS.md 等）中加一行——「撰写 / 重写 / 梳理 / 压缩 / 评审技术文档前，先完整阅读 `<技能目录>/SKILL.md` 并遵循其工作流；按需读取同目录 `references/`」。
 
